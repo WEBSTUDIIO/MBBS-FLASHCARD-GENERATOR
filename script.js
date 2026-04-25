@@ -1,3 +1,9 @@
+console.log("script loaded");
+
+// =====================
+// 3D BACKGROUND
+// =====================
+
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(
@@ -15,21 +21,21 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.z = 5;
 
-// Geometry (floating object)
+// object
 const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
 const material = new THREE.MeshStandardMaterial({
-  color: 0x22c55e,
+  color: 0x22c55e
 });
 
 const torus = new THREE.Mesh(geometry, material);
 scene.add(torus);
 
-// Light
+// light
 const light = new THREE.PointLight(0xffffff);
 light.position.set(5, 5, 5);
 scene.add(light);
 
-// Animation loop
+// animation
 function animate() {
   requestAnimationFrame(animate);
 
@@ -38,23 +44,28 @@ function animate() {
 
   renderer.render(scene, camera);
 }
-
 animate();
 
+
+// =====================
+// FLASHCARDS BUTTON
+// =====================
+
 function generateFlashcards() {
-  console.log("Button clicked");
+  console.log("button clicked");
 
   const text = document.getElementById("inputText").value;
   const output = document.getElementById("output");
 
-  if (!text) {
-    output.innerHTML = "No text entered";
+  if (!text.trim()) {
+    output.innerHTML = "Please enter notes first";
     return;
   }
 
   output.innerHTML = `
-    <h3>Flashcard</h3>
-    <p><b>Q:</b> What is this about?</p>
-    <p><b>A:</b> ${text}</p>
+    <div class="card">
+      <b>Q:</b> What is this topic?<br><br>
+      <b>A:</b> ${text}
+    </div>
   `;
 }
