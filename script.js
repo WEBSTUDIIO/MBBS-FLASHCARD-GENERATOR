@@ -1,7 +1,7 @@
 console.log("script loaded");
 
 // =====================
-// 3D BACKGROUND
+// 🌌 3D BACKGROUND
 // =====================
 
 const scene = new THREE.Scene();
@@ -48,17 +48,15 @@ animate();
 
 
 // =====================
-// FLASHCARDS BUTTON
+// 🧠 FLASHCARDS BUTTON
 // =====================
 
 function generateFlashcards() {
-  console.log("button clicked");
-
   const text = document.getElementById("inputText").value;
   const output = document.getElementById("output");
 
   if (!text.trim()) {
-    output.innerHTML = "Please enter notes first";
+    output.innerHTML = "<p>Please enter notes first</p>";
     return;
   }
 
