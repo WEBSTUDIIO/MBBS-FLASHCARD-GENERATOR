@@ -8,7 +8,7 @@ body {
   background: linear-gradient(135deg, #dff7e1, #c9f2d1, #b8ebc3);
 }
 
-/* soft glow effect */
+/* soft glow */
 body::before {
   content: "";
   position: fixed;
@@ -26,7 +26,7 @@ body::before {
   100% { transform: rotate(360deg); }
 }
 
-/* 3D canvas */
+/* 🌌 3D canvas */
 #bg {
   position: fixed;
   top: 0;
@@ -35,31 +35,32 @@ body::before {
   opacity: 0.35;
 }
 
-/* main box */
+/* 🧊 main container */
 .container {
   max-width: 800px;
   margin: auto;
   margin-top: 60px;
   padding: 40px;
 
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255,255,255,0.65);
   backdrop-filter: blur(12px);
   border-radius: 16px;
+
   border: 1px solid rgba(0,0,0,0.05);
 }
 
 /* textarea */
 textarea {
   width: 100%;
-  height: 150px;
+  height: 160px;
   margin-top: 10px;
   padding: 12px;
 
-  border-radius: 10px;
   border: none;
   outline: none;
+  border-radius: 10px;
 
-  background: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.85);
   color: #0f172a;
 }
 
@@ -80,14 +81,11 @@ button:hover {
 }
 
 /* flashcards */
-#output {
-  margin-top: 20px;
-}
-
 .card {
+  margin-top: 15px;
   padding: 15px;
-  margin-top: 10px;
   border-radius: 12px;
-  background: rgba(255,255,255,0.7);
+
+  background: rgba(255,255,255,0.8);
   border: 1px solid rgba(0,0,0,0.05);
 }
