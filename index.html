@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Flashcard Generator</title>
+  <title>MBBS Flashcards AI</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>MBBS Flashcards</h1>
+<!-- 3D BACKGROUND CANVAS -->
+<canvas id="bg"></canvas>
 
-<textarea id="inputText" placeholder="Paste notes here"></textarea>
+<!-- CONTENT ON TOP -->
+<div class="content">
 
-<button onclick="generateFlashcards()">Generate</button>
+  <h1>🧠 MBBS Flashcard Generator</h1>
 
-<div id="output"></div>
+  <textarea id="inputText" placeholder="Paste your notes here..."></textarea>
+
+  <button onclick="generateFlashcards()">Generate Flashcards</button>
+
+  <div id="output"></div>
+
+</div>
+
+<!-- THREE.JS LIBRARY -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script src="script.js"></script>
 
