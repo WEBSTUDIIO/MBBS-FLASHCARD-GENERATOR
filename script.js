@@ -1,4 +1,4 @@
-const API_KEY = "AIzaSyB6V4H8oMt5YzHGAjec3Hlon53mptipwfQ";
+const API_KEY = "AIzaSyBZlQNI7Id3-mRASCHZ9HS3FCBcgsXNFUU";
 
 /* =========================
    🌌 3D BACKGROUND
@@ -21,7 +21,7 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.z = 5;
 
-// floating object
+// floating torus
 const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
 const material = new THREE.MeshStandardMaterial({
   color: 0x22c55e
@@ -35,7 +35,7 @@ const light = new THREE.PointLight(0xffffff);
 light.position.set(5, 5, 5);
 scene.add(light);
 
-// animation
+// animation loop
 function animate() {
   requestAnimationFrame(animate);
 
@@ -45,6 +45,13 @@ function animate() {
   renderer.render(scene, camera);
 }
 animate();
+
+/* resize fix */
+window.addEventListener("resize", () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
 
 
 /* =========================
@@ -56,11 +63,11 @@ async function generateFlashcards() {
   const output = document.getElementById("output");
 
   if (!text.trim()) {
-    output.innerHTML = "<p>Please enter notes first</p>";
+    output.innerHTML = "Please enter notes first";
     return;
   }
 
-  output.innerHTML = "<p>Generating AI flashcards... ⏳</p>";
+  output.innerHTML = "Generating AI flashcards... ⏳";
 
   try {
     const response = await fetch(
@@ -71,28 +78,27 @@ async function generateFlashcards() {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          contents: [
-            {
-              parts: [
-                {
-                  text: `
-You are an MBBS exam tutor.
+          contents: [{
+            parts: [{
+              text: `
+You are an expert MBBS professor.
 
 Convert notes into HIGH-YIELD flashcards.
 
 Format strictly:
-Q: ...
-A: ...
+Q: question
+A: short answer (1–3 lines max)
 
-Keep answers short and exam-focused.
+Rules:
+- No extra explanation
+- Exam-focused only
+- Medical accuracy required
 
 Notes:
 ${text}
-                  `
-                }
-              ]
-            }
-          ]
+              `
+            }]
+          }]
         })
       }
     );
@@ -107,23 +113,40 @@ ${text}
 
   } catch (err) {
     console.log(err);
-    output.innerHTML = "<p>Error calling AI</p>";
+    output.innerHTML = "Error connecting to AI";
   }
 }
 
 
 /* =========================
-   🧾 DISPLAY FLASHCARDS
+   🧾 FLASHCARD RENDERING
 ========================= */
 
 function display(text) {
   const output = document.getElementById("output");
 
-  const blocks = text.split("\n\n");
+  if (!text) {
+    output.innerHTML = "No flashcards generated";
+    return;
+  }
 
-  output.innerHTML = blocks.map(b => `
-    <div class="card">
-      ${b.replace(/\n/g, "<br>")}
-    </div>
-  `).join("");
+  const lines = text.split("\n");
+
+  let html = "";
+  let block = "";
+
+  lines.forEach(line => {
+    if (line.startsWith("Q:")) {
+      if (block) html += `<div class="card">${block}</div>`;
+      block = `<b>${line}</b><br>`;
+    } else if (line.startsWith("A:")) {
+      block += `<b>${line}</b><br>`;
+    } else {
+      block += `${line}<br>`;
+    }
+  });
+
+  if (block) html += `<div class="card">${block}</div>`;
+
+  output.innerHTML = html;
 }
