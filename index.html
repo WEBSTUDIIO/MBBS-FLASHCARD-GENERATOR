@@ -1,18 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>MBBS Flashcards AI</title>
+  <meta charset="UTF-8">
+  <title>MBBS Flashcard Generator</title>
+
+  <!-- IMPORTANT: CSS LINK (this was your main bug earlier) -->
   <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
 
+<!-- 3D BACKGROUND -->
 <canvas id="bg"></canvas>
 
-<div class="content">
+<div class="container">
 
   <h1>🧠 MBBS Flashcard Generator</h1>
 
-  <textarea id="inputText" placeholder="Paste your notes here..."></textarea>
+  <textarea id="inputText" placeholder="Paste your medical notes here..."></textarea>
 
   <button onclick="generateFlashcards()">Generate Flashcards</button>
 
@@ -20,10 +25,9 @@
 
 </div>
 
-<!-- THREE.JS MUST LOAD FIRST -->
+<!-- THREE.JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-<!-- YOUR SCRIPT LAST -->
 <script src="script.js"></script>
 
 </body>
