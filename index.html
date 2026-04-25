@@ -1,26 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Med Flashcards AI</title>
+  <title>MBBS Flashcard Generator</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- 3D Background -->
-  <canvas id="bg"></canvas>
+  <h1>🧠 MBBS Flashcard Generator</h1>
 
-  <div class="content">
-    <h1>🧠 Med Flashcards AI</h1>
-    <p>Turn your medical notes into high-yield flashcards instantly</p>
+  <textarea id="inputText" placeholder="Paste your medical notes here..."></textarea>
 
-    <textarea id="inputText" placeholder="Paste your notes..."></textarea>
+  <!-- BUTTON -->
+  <button onclick="generateFlashcards()">Generate Flashcards</button>
 
-    <button onclick="generateFlashcards()">Generate</button>
+  <!-- OUTPUT -->
+  <div id="output"></div>
 
-    <div id="output"></div>
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
