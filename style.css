@@ -1,11 +1,10 @@
 body {
   margin: 0;
   font-family: Arial;
-  color: white;
   overflow: hidden;
+  color: white;
 }
 
-/* 3D background canvas */
 #bg {
   position: fixed;
   top: 0;
@@ -13,12 +12,11 @@ body {
   z-index: -1;
 }
 
-/* content above 3D */
 .content {
   position: relative;
   max-width: 800px;
   margin: auto;
-  padding: 50px;
+  padding: 40px;
   z-index: 1;
 }
 
@@ -30,7 +28,7 @@ textarea {
 
 button {
   margin-top: 10px;
-  padding: 10px 15px;
+  padding: 10px;
   background: #22c55e;
   border: none;
   color: white;
@@ -40,6 +38,6 @@ button {
 .card {
   margin-top: 20px;
   padding: 15px;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.6);
   border-radius: 10px;
 }
